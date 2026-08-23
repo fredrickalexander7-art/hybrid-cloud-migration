@@ -91,14 +91,14 @@ See [`screenshots/`](screenshots/) for the full set. Evidence is CLI/terminal-ba
 
 **AWS**
 - [`aws-terraform-show-1-igw-routetable.png`](screenshots/aws-terraform-show-1-igw-routetable.png) → [`aws-terraform-show-4-vpc-end.png`](screenshots/aws-terraform-show-4-vpc-end.png) — full `terraform show` output confirming the VPC, public/private subnets, Internet Gateway, and route table as actually provisioned
-- [`aws-docker-install.png`](screenshots/aws-docker-install.png) — Docker installed and enabled on the app server
-- [`aws-flask-app-running.png`](screenshots/aws-flask-app-running.png) — Flask container running, responding to a local `curl`
-- [`aws-bastion-to-app-curl.png`](screenshots/aws-bastion-to-app-curl.png) — SSH into the bastion, then `curl` the private app server directly, proving the full bastion → app network path works end-to-end
+- [`aws-docker-install.png`](screenshots/aws-docker-install.png.png) — Docker installed and enabled on the app server
+- [`aws-flask-app-running.png`](screenshots/aws-flask-app-running.png.png) — Flask container running, responding to a local `curl`
+- [`aws-bastion-to-app-curl.png`](screenshots/aws-bastion-to-app-curl.png.png) — SSH into the bastion, then `curl` the private app server directly, proving the full bastion → app network path works end-to-end
 
 **Azure**
-- [`azure-sp-role-assignment.png`](screenshots/azure-sp-role-assignment.png) — `terraform-sp` confirmed as Contributor on the subscription (the fix for the Security Defaults incident)
+- [`azure-sp-role-assignment.png`](screenshots/azure-sp-role-assignment.png.png) — `terraform-sp` confirmed as Contributor on the subscription (the fix for the Security Defaults incident)
 - [`azure-nsg-terraform-apply.png`](screenshots/azure-nsg-terraform-apply.png) — NSG `terraform apply` completing cleanly (bastion + app security groups and their subnet associations)
-- [`azure-bastion-ssh-banner.png`](screenshots/azure-bastion-ssh-banner.png) — SSH into the Azure bastion host
+- [`azure-bastion-ssh-banner.png`](screenshots/azure-bastion-ssh-connect.png) — SSH into the Azure bastion host
 
 AWS account ID and one identifying IP address were redacted from these images before publishing.
 
@@ -107,14 +107,6 @@ Not currently included: an Azure-side equivalent of the AWS bastion→app curl (
 ## Skills demonstrated
 
 Terraform (multi-cloud, provider configuration, state management, resource dependencies), AWS (VPC, EC2, Security Groups, NAT Gateway, IAM), Azure (VNet, Virtual Machines, NSGs, NAT Gateway, Entra ID / App Registrations, RBAC), Docker, Linux administration, SSH bastion-host architecture and agent forwarding, cloud identity and access management design, systematic incident troubleshooting across two different cloud platforms.
-
-## Resume bullets
-
-- Deployed parallel, functionally-identical infrastructure on AWS and Azure (VPC/VNet with public/private subnets, NAT Gateway, bastion-host architecture, containerized app server) using Terraform, directly comparing IAM vs RBAC, security groups vs NSGs, and EC2 vs Azure VM service models.
-- Diagnosed and resolved a real Azure identity/security incident in which Security Defaults blocked Terraform's personal-account authentication; redesigned the authentication approach around a dedicated service principal with least-privilege access, mirroring IAM best practice already applied on the AWS side of the same project.
-- Diagnosed and resolved outbound-connectivity failures in private subnets on both cloud platforms (package installs hanging with no internet access) by implementing NAT Gateways — identified and fixed the same architectural gap independently on two different clouds.
-- Containerized and deployed a Flask application to isolated private subnets on both AWS and Azure, verifying end-to-end reachability exclusively through a bastion host and confirming no direct internet exposure on either platform.
-- Validated infrastructure reproducibility by fully tearing down and rebuilding both cloud environments from Terraform code alone.
 
 ## Lessons learned
 
