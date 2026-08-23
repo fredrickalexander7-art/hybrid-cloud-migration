@@ -1,4 +1,3 @@
-[README.md](https://github.com/user-attachments/files/31356166/README.md)
 # Hybrid Cloud Migration — AWS + Azure
 
 A parallel, functionally-identical infrastructure build on both AWS and Azure — same architecture, same containerized app, deployed independently on each platform using Terraform. Built to directly compare how the two clouds handle networking, identity, and access control, including a real security-architecture incident along the way.
