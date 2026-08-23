@@ -98,7 +98,7 @@ See [`screenshots/`](screenshots/) for the full set. Evidence is CLI/terminal-ba
 **Azure**
 - [`azure-sp-role-assignment.png`](screenshots/azure-sp-role-assignment.png.png) — `terraform-sp` confirmed as Contributor on the subscription (the fix for the Security Defaults incident)
 - [`azure-nsg-terraform-apply.png`](screenshots/azure-nsg-terraform-apply.png) — NSG `terraform apply` completing cleanly (bastion + app security groups and their subnet associations)
-- [`azure-bastion-ssh-banner.png`](screenshots/azure-bastion-ssh-connect.png) — SSH into the Azure bastion host
+- [`azure-bastion-ssh-connect.png`](screenshots/azure-bastion-ssh-connect.png) — SSH into the Azure bastion host
 
 AWS account ID and one identifying IP address were redacted from these images before publishing.
 
