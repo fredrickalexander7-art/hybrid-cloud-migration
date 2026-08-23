@@ -91,12 +91,12 @@ See [`screenshots/`](screenshots/) for the full set. Evidence is CLI/terminal-ba
 
 **AWS**
 - [`aws-terraform-show-1-igw-routetable.png`](screenshots/aws-terraform-show-1-igw-routetable.png) → [`aws-terraform-show-4-vpc-end.png`](screenshots/aws-terraform-show-4-vpc-end.png) — full `terraform show` output confirming the VPC, public/private subnets, Internet Gateway, and route table as actually provisioned
-- [`aws-docker-install.png`](screenshots/aws-docker-install.png.png) — Docker installed and enabled on the app server
-- [`aws-flask-app-running.png`](screenshots/aws-flask-app-running.png.png) — Flask container running, responding to a local `curl`
-- [`aws-bastion-to-app-curl.png`](screenshots/aws-bastion-to-app-curl.png.png) — SSH into the bastion, then `curl` the private app server directly, proving the full bastion → app network path works end-to-end
+- [`aws-docker-install.png`](screenshots/aws-docker-install.png) — Docker installed and enabled on the app server
+- [`aws-flask-app-running.png`](screenshots/aws-flask-app-running.png) — Flask container running, responding to a local `curl`
+- [`aws-bastion-to-app-curl.png`](screenshots/aws-bastion-to-app-curl.png) — SSH into the bastion, then `curl` the private app server directly, proving the full bastion → app network path works end-to-end
 
 **Azure**
-- [`azure-sp-role-assignment.png`](screenshots/azure-sp-role-assignment.png.png) — `terraform-sp` confirmed as Contributor on the subscription (the fix for the Security Defaults incident)
+- [`azure-sp-role-assignment.png`](screenshots/azure-sp-role-assignment.png) — `terraform-sp` confirmed as Contributor on the subscription (the fix for the Security Defaults incident)
 - [`azure-nsg-terraform-apply.png`](screenshots/azure-nsg-terraform-apply.png) — NSG `terraform apply` completing cleanly (bastion + app security groups and their subnet associations)
 - [`azure-bastion-ssh-connect.png`](screenshots/azure-bastion-ssh-connect.png) — SSH into the Azure bastion host
 
