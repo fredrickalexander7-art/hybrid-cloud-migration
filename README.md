@@ -1,3 +1,4 @@
+[README.md](https://github.com/user-attachments/files/31356166/README.md)
 # Hybrid Cloud Migration — AWS + Azure
 
 A parallel, functionally-identical infrastructure build on both AWS and Azure — same architecture, same containerized app, deployed independently on each platform using Terraform. Built to directly compare how the two clouds handle networking, identity, and access control, including a real security-architecture incident along the way.
@@ -87,10 +88,22 @@ Two additional real troubleshooting incidents came up during the build and are d
 
 ## Screenshots
 
-See [`screenshots/`](screenshots/) for the full set, including:
-- AWS: VPC/subnets in the console, security groups, bastion + app server EC2 instances, NAT Gateway, `terraform apply` outputs, the Flask app responding from the bastion
-- Azure: resource group/VNet in the portal, NSGs, bastion + app VMs, NAT Gateway, the service principal (App registration) setup, the role assignment, `terraform apply` outputs, the Flask app responding from the bastion
-- The full destroy → apply reproducibility test on both platforms
+See [`screenshots/`](screenshots/) for the full set. Evidence is CLI/terminal-based rather than console screenshots, showing actual command output at each stage:
+
+**AWS**
+- [`aws-terraform-show-1-igw-routetable.png`](screenshots/aws-terraform-show-1-igw-routetable.png) → [`aws-terraform-show-4-vpc-end.png`](screenshots/aws-terraform-show-4-vpc-end.png) — full `terraform show` output confirming the VPC, public/private subnets, Internet Gateway, and route table as actually provisioned
+- [`aws-docker-install.png`](screenshots/aws-docker-install.png) — Docker installed and enabled on the app server
+- [`aws-flask-app-running.png`](screenshots/aws-flask-app-running.png) — Flask container running, responding to a local `curl`
+- [`aws-bastion-to-app-curl.png`](screenshots/aws-bastion-to-app-curl.png) — SSH into the bastion, then `curl` the private app server directly, proving the full bastion → app network path works end-to-end
+
+**Azure**
+- [`azure-sp-role-assignment.png`](screenshots/azure-sp-role-assignment.png) — `terraform-sp` confirmed as Contributor on the subscription (the fix for the Security Defaults incident)
+- [`azure-nsg-terraform-apply.png`](screenshots/azure-nsg-terraform-apply.png) — NSG `terraform apply` completing cleanly (bastion + app security groups and their subnet associations)
+- [`azure-bastion-ssh-banner.png`](screenshots/azure-bastion-ssh-banner.png) — SSH into the Azure bastion host
+
+AWS account ID and one identifying IP address were redacted from these images before publishing.
+
+Not currently included: an Azure-side equivalent of the AWS bastion→app curl (both environments were verified working, but this specific shot wasn't captured before teardown), AWS Console/Azure Portal screenshots, and a screenshot of the destroy → rebuild reproducibility test. The [incident writeup](docs/incident-writeup.md) and this README describe that work in detail even where a screenshot isn't available.
 
 ## Skills demonstrated
 
